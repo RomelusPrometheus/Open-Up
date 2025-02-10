@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffccd5;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .envelope-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .envelope {
+            width: 200px;
+            height: 150px;
+            background-color: #e63946;
+            position: relative;
+            border-radius: 10px;
+        }
+        .flap {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 75px solid #ff4d6d;
+            position: absolute;
+            top: -75px;
+            left: 0;
+            transition: transform 0.5s;
+        }
+        .message {
+            display: none;
+            color: deeppink;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            font-family: bold;
+        }
+        .btn {
+            background-color: #e63946;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        .btn:hover {
+            background-color: #ff4d6d;
+        }
+        .heart {
+            font-size: 100px;
+            color: red;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope-container" onclick="openEnvelope()">
+        <div class="flap" id="flap"></div>
+        <div class="envelope"></div>
+        <p style="color: white; font-size: 20px; margin-top: 10px;">OPEN UP!</p>
+    </div>
+
+    <div class="message" id="message">
+        <h1>Wanga, my love, so pure and true,<br>Every day feels bright with you.<br>Your smile’s a light that guides my way,<br>My heart is yours, forever to stay.<br><br><span class='heart'>&#10084;</span><br><br>Wanga Nephawe, Will you be my Valentine?</h1>
+        <button class="btn" onclick="yesResponse()">Yes</button>
+        <button class="btn" onclick="noResponse()">No</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('flap').style.transform = "rotateX(180deg)";
+            setTimeout(() => {
+                document.getElementById('message').style.display = 'block';
+            }, 500);
+        }
+        function yesResponse() {
+            document.getElementById('output').innerHTML = "<span style='font-size: 24px; font-family: bold; font-weight: bold;'>That's my girl! Thank you Babe! You are the best!</span> <br> <span class='heart'>&#10084;</span>";
+        }
+        function noResponse() {
+            document.getElementById('output').innerHTML = "Are you sure? <br> <button class='btn' onclick='heartbreak()'>Yes</button> <button class='btn' onclick='yesResponse()'>No</button>";
+        }
+        function heartbreak() {
+            document.getElementById('output').innerHTML = "💔 <br> <span style='font-size: 30px;'>😢</span>";
+        }
+    </script>
+</body>
+</html>
